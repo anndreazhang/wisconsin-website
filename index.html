@@ -45,7 +45,7 @@
           <a href="#contact" class="btn btn-ghost">Get in Touch</a>
         </div>
         <div class="hero-stats">
-          <div class="hero-stat"><strong>100%</strong><span>In-House Billing</span></div>
+          <div class="hero-stat"><strong data-count="100" data-suffix="%">100%</strong><span>In-House Billing</span></div>
           <div class="hero-stat"><strong>24/7</strong><span>Dedicated Support</span></div>
         </div>
       </div>
@@ -245,14 +245,21 @@
               <div class="contact-item-icon">📍</div>
               <div>
                 <strong>Address</strong>
-                <span>1433 North Water Street<br>Milwaukee, Wisconsin 53202</span>
+                <span>1433 North Water Street, Suite 400<br>Milwaukee, Wisconsin 53202</span>
               </div>
             </div>
             <div class="contact-item">
-              <div class="contact-item-icon">📞</div>
               <div>
-                <strong>Phone</strong>
-                <span><a href="tel:4142797060" style="color:var(--blue)">(414) 279-7060</a></span>
+                <strong>Client Inquiries</strong>
+                <span style="display:block"><a href="tel:4142797060" style="color:var(--blue)">(414) 279-7060</a></span>
+                <span style="display:block"><a href="mailto:info@anesthesiaserviceswi.com" style="color:var(--blue)">info@anesthesiaserviceswi.com</a></span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div>
+                <strong>Billing</strong>
+                <span style="display:block"><a href="tel:8885898550" style="color:var(--blue)">(888) 589-8550</a></span>
+                <span style="display:block"><a href="mailto:billing@anesthesiaserviceswi.com" style="color:var(--blue)">billing@anesthesiaserviceswi.com</a></span>
               </div>
             </div>
             <div class="contact-item">
@@ -273,15 +280,20 @@
         <div class="contact-panel reveal">
           <div class="form-tabs" role="tablist" aria-label="Contact form type">
             <button class="tab-btn active" role="tab" aria-selected="true"  data-tab="tab-general"  aria-controls="tab-general">General Inquiry</button>
-            <button class="tab-btn"        role="tab" aria-selected="false" data-tab="tab-services" aria-controls="tab-services">Services Request</button>
+            <button class="tab-btn"        role="tab" aria-selected="false" data-tab="tab-clients"  aria-controls="tab-clients">Clients</button>
+            <button class="tab-btn"        role="tab" aria-selected="false" data-tab="tab-services" aria-controls="tab-services">Anesthesia Providers</button>
             <button class="tab-btn"        role="tab" aria-selected="false" data-tab="tab-billing"  aria-controls="tab-billing">Billing Inquiry</button>
           </div>
 
           <div class="form-content">
 
-            <!-- Tab 1: General -->
+            <!-- Tab 1: General Inquiry -->
             <div class="tab-pane active" id="tab-general" role="tabpanel">
               <form novalidate>
+                <div class="form-group">
+                  <label for="g-title">Title</label>
+                  <input type="text" id="g-title" placeholder="e.g. Medical Director" />
+                </div>
                 <div class="form-row">
                   <div class="form-group">
                     <label for="g-fname">First Name *</label>
@@ -297,12 +309,16 @@
                   <input type="email" id="g-email" placeholder="jane@example.com" autocomplete="email" required />
                 </div>
                 <div class="form-group">
-                  <label for="g-phone">Phone Number</label>
-                  <input type="tel" id="g-phone" placeholder="(414) 000-0000" autocomplete="tel" />
+                  <label for="g-phone">Phone Number *</label>
+                  <input type="tel" id="g-phone" placeholder="(414) 000-0000" autocomplete="tel" required />
                 </div>
                 <div class="form-group">
-                  <label for="g-message">Message *</label>
-                  <textarea id="g-message" placeholder="How can we help you?" required></textarea>
+                  <label for="g-practice">Practice or Facility Name</label>
+                  <input type="text" id="g-practice" placeholder="e.g. Surgery Center of Wisconsin" />
+                </div>
+                <div class="form-group">
+                  <label for="g-message">Message</label>
+                  <textarea id="g-message" placeholder="How can we help you?"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="g-files">Attach Files (optional)</label>
@@ -316,69 +332,102 @@
               </form>
             </div>
 
-            <!-- Tab 2: Services Request -->
-            <div class="tab-pane" id="tab-services" role="tabpanel">
+            <!-- Tab 2: Clients -->
+            <div class="tab-pane" id="tab-clients" role="tabpanel">
               <form novalidate>
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="s-fname">First Name *</label>
-                    <input type="text" id="s-fname" placeholder="Jane" autocomplete="given-name" required />
-                  </div>
-                  <div class="form-group">
-                    <label for="s-lname">Last Name *</label>
-                    <input type="text" id="s-lname" placeholder="Smith" autocomplete="family-name" required />
-                  </div>
+                <div class="form-group">
+                  <label for="cl-title">Title</label>
+                  <input type="text" id="cl-title" placeholder="e.g. Medical Director" />
                 </div>
                 <div class="form-row">
                   <div class="form-group">
-                    <label for="s-org">Organization / Facility *</label>
-                    <input type="text" id="s-org" placeholder="General Hospital" required />
+                    <label for="cl-fname">First Name *</label>
+                    <input type="text" id="cl-fname" placeholder="Jane" autocomplete="given-name" required />
                   </div>
                   <div class="form-group">
-                    <label for="s-role">Your Role / Title</label>
-                    <input type="text" id="s-role" placeholder="Medical Director" />
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="form-group">
-                    <label for="s-email">Email Address *</label>
-                    <input type="email" id="s-email" placeholder="jane@hospital.org" autocomplete="email" required />
-                  </div>
-                  <div class="form-group">
-                    <label for="s-phone">Phone Number *</label>
-                    <input type="tel" id="s-phone" placeholder="(414) 000-0000" autocomplete="tel" required />
+                    <label for="cl-lname">Last Name *</label>
+                    <input type="text" id="cl-lname" placeholder="Smith" autocomplete="family-name" required />
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="s-location">Facility Location (City, State) *</label>
-                  <input type="text" id="s-location" placeholder="Milwaukee, WI" required />
+                  <label for="cl-email">Email Address *</label>
+                  <input type="email" id="cl-email" placeholder="jane@example.com" autocomplete="email" required />
                 </div>
                 <div class="form-group">
-                  <label>Services Needed</label>
-                  <div class="checkbox-group">
-                    <label class="checkbox-label"><input type="checkbox" /> Anesthesia Professionals</label>
-                    <label class="checkbox-label"><input type="checkbox" /> In-House Billing</label>
-                    <label class="checkbox-label"><input type="checkbox" /> Supply Chain Management</label>
-                    <label class="checkbox-label"><input type="checkbox" /> Dedicated Services</label>
-                  </div>
+                  <label for="cl-phone">Phone Number *</label>
+                  <input type="tel" id="cl-phone" placeholder="(414) 000-0000" autocomplete="tel" required />
                 </div>
                 <div class="form-group">
-                  <label for="s-message">Additional Details</label>
-                  <textarea id="s-message" placeholder="Tell us about your facility's needs, case volume, or timeline…"></textarea>
+                  <label for="cl-practice">Practice or Facility Name</label>
+                  <input type="text" id="cl-practice" placeholder="e.g. Surgery Center of Wisconsin" />
                 </div>
                 <div class="form-group">
-                  <label for="s-files">Attach Files (optional)</label>
-                  <input type="file" id="s-files" multiple />
+                  <label for="cl-message">Message</label>
+                  <textarea id="cl-message" placeholder="How can we help you?"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="cl-files">Attach Files (optional)</label>
+                  <input type="file" id="cl-files" multiple />
                 </div>
                 <label class="privacy-check">
                   <input type="checkbox" required />
                   I have read and agree to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a>.
                 </label>
-                <button type="submit" class="btn-submit">Submit Request</button>
+                <button type="submit" class="btn-submit">Send Message</button>
               </form>
             </div>
 
-            <!-- Tab 3: Billing Inquiry -->
+            <!-- Tab 3: Anesthesia Providers -->
+            <div class="tab-pane" id="tab-services" role="tabpanel">
+              <form novalidate>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="ap-fname">First Name *</label>
+                    <input type="text" id="ap-fname" placeholder="Jane" autocomplete="given-name" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="ap-lname">Last Name *</label>
+                    <input type="text" id="ap-lname" placeholder="Smith" autocomplete="family-name" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="ap-degree">Degree *</label>
+                  <select id="ap-degree" required>
+                    <option value="">Select degree</option>
+                    <option value="MD">MD</option>
+                    <option value="DO">DO</option>
+                    <option value="CRNA">CRNA</option>
+                    <option value="DNP">DNP</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="ap-phone">Phone Number *</label>
+                    <input type="tel" id="ap-phone" placeholder="(414) 000-0000" autocomplete="tel" required />
+                  </div>
+                  <div class="form-group">
+                    <label for="ap-email">Email Address *</label>
+                    <input type="email" id="ap-email" placeholder="jane@example.com" autocomplete="email" required />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="ap-message">Message</label>
+                  <textarea id="ap-message" placeholder="Tell us about your background, interests, or any questions you have…"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="ap-files">Attach Files (optional)</label>
+                  <input type="file" id="ap-files" multiple />
+                </div>
+                <label class="privacy-check">
+                  <input type="checkbox" required />
+                  I have read and agree to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a>.
+                </label>
+                <button type="submit" class="btn-submit">Submit Application</button>
+              </form>
+            </div>
+
+            <!-- Tab 4: Billing Inquiry -->
             <div class="tab-pane" id="tab-billing" role="tabpanel">
               <form novalidate>
                 <div class="form-row">
@@ -392,8 +441,8 @@
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="b-facility">Facility Name *</label>
-                  <input type="text" id="b-facility" placeholder="Surgery Center of Wisconsin" required />
+                  <label for="b-facility">Facility Name</label>
+                  <input type="text" id="b-facility" placeholder="Surgery Center of Wisconsin" />
                 </div>
                 <div class="form-row">
                   <div class="form-group">
@@ -410,8 +459,8 @@
                   <input type="text" id="b-emr" placeholder="e.g. Epic, Cerner, AdvancedMD" />
                 </div>
                 <div class="form-group">
-                  <label for="b-issue">Nature of Billing Inquiry *</label>
-                  <textarea id="b-issue" placeholder="Describe your billing question, issue, or what you're looking for in a billing partner…" required></textarea>
+                  <label for="b-issue">Nature of Billing Inquiry</label>
+                  <textarea id="b-issue" placeholder="Describe your billing question, issue, or what you're looking for in a billing partner…"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="b-files">Attach Files (optional)</label>
@@ -462,15 +511,16 @@
         <div class="footer-col">
           <h4>Contact</h4>
           <ul>
-            <li><a href="https://maps.google.com/?q=1433+North+Water+Street+Milwaukee+WI+53202" target="_blank" rel="noopener">1433 N. Water Street<br>Milwaukee, WI 53202</a></li>
-            <li><a href="tel:4142797060">(414) 279-7060</a></li>
-            <li style="color:rgba(255,255,255,0.48);font-size:0.875rem"><strong style="color:rgba(255,255,255,0.7);display:block;font-size:0.74rem;letter-spacing:0.06em;text-transform:uppercase;margin-top:0.5rem">Billing</strong>
+            <li><a href="https://maps.google.com/?q=1433+North+Water+Street+Suite+400+Milwaukee+WI+53202" target="_blank" rel="noopener">1433 N. Water Street, Suite 400<br>Milwaukee, WI 53202</a></li>
+            <li style="margin-top:0.5rem;padding:0.75rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:6px">
+              <strong style="display:block;font-size:0.74rem;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.35rem">Client Inquiries</strong>
+              <a href="tel:4142797060">(414) 279-7060</a><br>
+              <a href="mailto:info@anesthesiaserviceswi.com">info@anesthesiaserviceswi.com</a>
+            </li>
+            <li style="margin-top:0.5rem;padding:0.75rem;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:6px">
+              <strong style="display:block;font-size:0.74rem;letter-spacing:0.06em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.35rem">Billing</strong>
               <a href="tel:8885898550">(888) 589-8550</a><br>
               <a href="mailto:billing@anesthesiaserviceswi.com">billing@anesthesiaserviceswi.com</a>
-            </li>
-            <li style="color:rgba(255,255,255,0.48);font-size:0.875rem"><strong style="color:rgba(255,255,255,0.7);display:block;font-size:0.74rem;letter-spacing:0.06em;text-transform:uppercase;margin-top:0.5rem">Client Inquiries</strong>
-              <a href="tel:4144797060">(414) 479-7060</a><br>
-              <a href="mailto:info@anesthesiaserviceswi.com">info@anesthesiaserviceswi.com</a>
             </li>
             <li><a href="#contact">Send a Message</a></li>
           </ul>

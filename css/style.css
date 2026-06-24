@@ -1163,3 +1163,84 @@ input[type="file"]::-webkit-file-upload-button {
   .pillars-grid   { grid-template-columns: 1fr; }
   .tab-btn { font-size: 0.72rem; padding: 0.85rem 0.2rem; }
 }
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+/* Hero entrance — elements fade up on page load */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+#hero h1      { animation: heroFadeUp 0.75s ease both; animation-delay: 0.10s; }
+.hero-sub     { animation: heroFadeUp 0.75s ease both; animation-delay: 0.28s; }
+.hero-btns    { animation: heroFadeUp 0.75s ease both; animation-delay: 0.44s; }
+.hero-stats   { animation: heroFadeUp 0.75s ease both; animation-delay: 0.60s; }
+.hero-panel   { animation: heroFadeUp 0.85s ease both; animation-delay: 0.50s; }
+
+/* Tab pane fade in when switched */
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.tab-pane.active { animation: tabFadeIn 0.22s ease; }
+
+/* Stagger service cards */
+.service-card:nth-child(1) { transition-delay: 0ms; }
+.service-card:nth-child(2) { transition-delay: 90ms; }
+.service-card:nth-child(3) { transition-delay: 180ms; }
+.service-card:nth-child(4) { transition-delay: 270ms; }
+
+/* Pillar lift on hover */
+.pillar {
+  transition: background 0.25s, transform 0.22s;
+}
+.pillar:hover { background: rgba(255,255,255,0.09); transform: translateY(-3px); }
+
+/* Select dropdown arrow */
+select {
+  background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237A90A8'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+/* 4-tab layout: wrap to 2×2 on narrow screens */
+@media (max-width: 560px) {
+  .form-tabs {
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    flex: 0 0 50%;
+    font-size: 0.71rem;
+    padding: 0.8rem 0.3rem;
+    border-bottom: none;
+    border-right: 1px solid var(--border);
+  }
+  .tab-btn:nth-child(2n) { border-right: none; }
+  .tab-btn:nth-child(n+3) { border-top: 1px solid var(--border); }
+  .tab-btn.active { border-bottom-color: transparent; }
+}
+
+/* Smooth nav link underline on hover */
+.nav-links a {
+  position: relative;
+}
+.nav-links a:not(.nav-cta)::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: rgba(255,255,255,0.6);
+  transition: width 0.2s ease;
+}
+.nav-links a:not(.nav-cta):hover::after { width: 100%; }
+
+/* Blog card image subtle zoom already defined; add stagger */
+.blog-card:nth-child(1) { transition-delay: 0ms; }
+.blog-card:nth-child(2) { transition-delay: 90ms; }

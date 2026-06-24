@@ -36,18 +36,26 @@ const tabBtns  = document.querySelectorAll('.tab-btn');
 const tabPanes = document.querySelectorAll('.tab-pane');
 tabBtns.forEach(btn => {
   btn.addEventListener('click', () => {
-    tabBtns.forEach(b  => b.classList.remove('active'));
+    tabBtns.forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-selected', 'false');
+    });
     tabPanes.forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
+    btn.setAttribute('aria-selected', 'true');
     const target = document.getElementById(btn.dataset.tab);
     if (target) target.classList.add('active');
   });
 });
 
-// Prevent form default submit (static site — wire up a real endpoint later)
+// Form submit: validate required fields + privacy checkbox, then show success
 document.querySelectorAll('form').forEach(form => {
   form.addEventListener('submit', e => {
     e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
     const btn = form.querySelector('.btn-submit');
     if (!btn) return;
     const orig = btn.textContent;
@@ -60,3 +68,23 @@ document.querySelectorAll('form').forEach(form => {
     }, 3000);
   });
 });
+
+// Hero stat counter animation
+function animateCounter(el, target, suffix, duration) {
+  const start = performance.now();
+  const step = (now) => {
+    const progress = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(eased * target) + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+// Trigger counter after hero entrance animations settle
+setTimeout(() => {
+  const el = document.querySelector('[data-count]');
+  if (el) {
+    animateCounter(el, parseInt(el.dataset.count, 10), el.dataset.suffix || '', 1400);
+  }
+}, 700);
